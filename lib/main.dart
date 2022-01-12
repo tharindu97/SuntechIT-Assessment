@@ -1,5 +1,5 @@
 import 'package:ecommerce/routers.dart';
-import 'package:ecommerce/views/reset_password/user_verification.dart';
+import 'package:ecommerce/views/navigation/navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 main() {
@@ -14,7 +14,7 @@ class SuntechITEcommerceApp extends StatelessWidget {
       title: 'SunTech IT Ecommerce Application',
       debugShowCheckedModeBanner: false,
       routes: routes,
-      initialRoute: UserVerification.routeName,
+      initialRoute: NavigationBar.routeName,
     );
   }
 }
