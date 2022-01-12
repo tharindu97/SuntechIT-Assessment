@@ -5,7 +5,6 @@ import 'package:ecommerce/widgets/social_media_button.dart';
 import 'package:flutter/material.dart';
 
 class UserRegister extends StatefulWidget {
-
   static const routeName = './register';
   const UserRegister({Key? key}) : super(key: key);
 
@@ -20,15 +19,21 @@ class _UserRegisterState extends State<UserRegister> {
       backgroundColor: AppColor.black,
       body: ListView(
         children: [
-          const SizedBox(height: 5,),
+          const SizedBox(
+            height: 5,
+          ),
           backButton(),
-          const SizedBox(height: 40,),
+          const SizedBox(
+            height: 40,
+          ),
           Container(
-            margin: EdgeInsets.only(left: 30),
+            margin: const EdgeInsets.only(left: 30),
             alignment: Alignment.topLeft,
             child: textWidget(title: "Sign up", fontSize: 25),
           ),
-          const SizedBox(height: 40,),
+          const SizedBox(
+            height: 40,
+          ),
 
           // User Full Name
           Container(
@@ -63,7 +68,9 @@ class _UserRegisterState extends State<UserRegister> {
             ),
           ),
 
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
           // User Email
           Container(
@@ -98,7 +105,9 @@ class _UserRegisterState extends State<UserRegister> {
             ),
           ),
 
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
           // User Password
           Container(
@@ -133,7 +142,9 @@ class _UserRegisterState extends State<UserRegister> {
             ),
           ),
 
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
           // User Confirm Password
           Container(
@@ -168,11 +179,15 @@ class _UserRegisterState extends State<UserRegister> {
             ),
           ),
 
-          const SizedBox(height: 25,),
+          const SizedBox(
+            height: 25,
+          ),
 
           const CustomButton(title: "SIGN UP"),
 
-          const SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
 
           const Text(
             "OR",
@@ -182,18 +197,26 @@ class _UserRegisterState extends State<UserRegister> {
               fontSize: 16,
             ),
           ),
-          const SizedBox(height: 8,),
+          const SizedBox(
+            height: 8,
+          ),
 
-          const SocialMedia(title: "Login With Google", imagePath: "images/google.png"),
+          const SocialMedia(
+              title: "Login With Google", imagePath: "images/google.png"),
 
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
-          const SocialMedia(title: "Login With Facebook", imagePath: "images/facebook.png"),
+          const SocialMedia(
+              title: "Login With Facebook", imagePath: "images/facebook.png"),
 
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
-          richText(firstName: "Already have an account? ", lastName: ' Sign in'),
-
+          richText(
+              firstName: "Already have an account? ", lastName: ' Sign in'),
         ],
       ),
     );
