@@ -209,14 +209,18 @@ class _UserRegisterState extends State<UserRegister> {
           ),
 
           const SocialMedia(
-              title: "Login With Facebook", imagePath: "images/facebook.png"),
+            title: "Login With Facebook",
+            imagePath: "images/facebook.png",
+          ),
 
           const SizedBox(
             height: 15,
           ),
 
           richText(
-              firstName: "Already have an account? ", lastName: ' Sign in'),
+            firstName: "Already have an account? ",
+            lastName: ' Sign in',
+          ),
         ],
       ),
     );

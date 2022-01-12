@@ -19,7 +19,10 @@ class CustomButton extends StatelessWidget {
           Expanded(
             child: Container(
               alignment: Alignment.center,
-              child: textWidget(title: title, fontSize: 20,),
+              child: textWidget(
+                title: title,
+                fontSize: 20,
+              ),
             ),
           ),
           Container(
