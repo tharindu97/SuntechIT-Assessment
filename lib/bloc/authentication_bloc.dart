@@ -16,4 +16,12 @@ class AuthenticationBloc {
   Future<Responce> createUserAccount(RequestBody requestBody) async {
     return await repository.registerClient.createUser(requestBody);
   }
+
+  Future<Responce> loginUserAccount({
+    required String token,
+    required String username,
+    required String password,
+  }) async {
+    return await repository.loginClient.loginUser(token, username, password);
+  }
 }

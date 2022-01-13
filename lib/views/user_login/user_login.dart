@@ -1,8 +1,13 @@
+import 'package:ecommerce/bloc/authentication_bloc.dart';
 import 'package:ecommerce/config/color_config.dart';
+import 'package:ecommerce/model/helper/authenricationrespond.dart';
+import 'package:ecommerce/utils/user_token.dart';
+import 'package:ecommerce/views/navigation/navigation_bar.dart';
 import 'package:ecommerce/widgets/common_widget.dart';
 import 'package:ecommerce/widgets/custom_button.dart';
 import 'package:ecommerce/widgets/social_media_button.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserLogin extends StatefulWidget {
   static const routeName = './login';
@@ -13,6 +18,19 @@ class UserLogin extends StatefulWidget {
 }
 
 class _UserLoginState extends State<UserLogin> {
+  AuthenticationBloc authenticationBloc = AuthenticationBloc();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  String? token;
+  Future<SharedPreferences> prefs = SharedPreferences.getInstance();
+
+  @override
+  void initState() {
+    prefs.then((value) => {token = value.getString('token')});
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,10 +70,11 @@ class _UserLoginState extends State<UserLogin> {
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Image.asset("images/email.png"),
                 ),
-                const Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "example@gmail.com",
+                Expanded(
+                  child: TextFormField(
+                    controller: _userNameController,
+                    decoration: const InputDecoration(
+                      hintText: "username",
                       hintStyle: TextStyle(color: AppColor.lightGray),
                       border: InputBorder.none,
                       labelStyle: TextStyle(fontSize: 20.0),
@@ -89,9 +108,10 @@ class _UserLoginState extends State<UserLogin> {
                   padding: const EdgeInsets.only(left: 10, right: 10),
                   child: Image.asset("images/password.png"),
                 ),
-                const Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
+                Expanded(
+                  child: TextFormField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(
                       hintText: "your password",
                       hintStyle: TextStyle(color: AppColor.lightGray),
                       border: InputBorder.none,
@@ -110,7 +130,24 @@ class _UserLoginState extends State<UserLogin> {
 
           CustomButton(
             title: "SIGN IN",
-            onTap: () {},
+            onTap: () async {
+              await authenticationBloc
+                  .loginUserAccount(
+                    token: token.toString(),
+                    username: _userNameController.text.toString(),
+                    password: _passwordController.text.toString(),
+                  )
+                  .then((Responce responce) => {
+                        if (responce.status == 1)
+                          {
+                            Navigator.pushNamed(
+                              context,
+                              NavigationBar.routeName,
+                            ),
+                          },
+                        flutterToast(msg: responce.message),
+                      });
+            },
           ),
 
           const SizedBox(

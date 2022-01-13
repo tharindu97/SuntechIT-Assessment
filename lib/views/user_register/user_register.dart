@@ -2,11 +2,13 @@ import 'package:ecommerce/bloc/authentication_bloc.dart';
 import 'package:ecommerce/config/color_config.dart';
 import 'package:ecommerce/model/helper/authenricationrespond.dart';
 import 'package:ecommerce/model/userregister/userregister.dart';
+import 'package:ecommerce/utils/user_token.dart';
 import 'package:ecommerce/views/user_login/user_login.dart';
 import 'package:ecommerce/widgets/common_widget.dart';
 import 'package:ecommerce/widgets/custom_button.dart';
 import 'package:ecommerce/widgets/social_media_button.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserRegister extends StatefulWidget {
   static const routeName = './register';
@@ -207,6 +209,9 @@ class _UserRegisterState extends State<UserRegister> {
                   .then((Responce responce) => {
                         if (responce.status == 1)
                           {
+                            saveToken(
+                              responce.token.toString(),
+                            ),
                             Navigator.pushNamed(context, UserLogin.routeName),
                           },
                         flutterToast(msg: responce.message),
