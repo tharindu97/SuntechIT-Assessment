@@ -22,6 +22,7 @@ class AuthenticationBloc {
     required String username,
     required String password,
   }) async {
+    print(token.toString());
     return await repository.loginClient.loginUser(token, username, password);
   }
 }
