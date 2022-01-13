@@ -1,4 +1,6 @@
 import 'package:ecommerce/config/color_config.dart';
+import 'package:ecommerce/views/user_login/user_login.dart';
+import 'package:ecommerce/views/user_register/user_register.dart';
 import 'package:ecommerce/widgets/common_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -16,18 +18,18 @@ class _IntroductionState extends State<Introduction> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('images/main_bg_design.png'),
-              fit: BoxFit.fitWidth,
-            ),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                AppColor.lightBlue,
-                AppColor.blue,
-              ],
-            ),
+          image: DecorationImage(
+            image: AssetImage('images/main_bg_design.png'),
+            fit: BoxFit.fitWidth,
+          ),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              AppColor.lightBlue,
+              AppColor.blue,
+            ],
+          ),
         ),
         width: double.infinity,
         height: double.infinity,
@@ -54,11 +56,10 @@ class _IntroductionState extends State<Introduction> {
                       style: TextStyle(
                           color: AppColor.white,
                           fontSize: 20,
-                          fontWeight: FontWeight.bold
-                      ),
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
-                   Positioned(
+                  Positioned(
                     top: 120,
                     left: 40,
                     child: Text(
@@ -66,8 +67,7 @@ class _IntroductionState extends State<Introduction> {
                       style: TextStyle(
                           color: AppColor.white,
                           fontSize: 40,
-                          fontWeight: FontWeight.bold
-                      ),
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -86,25 +86,35 @@ class _IntroductionState extends State<Introduction> {
                 ),
                 child: Row(
                   children: [
-                    Container(
-                      width: 103,
-                      height: 54,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColor.black,
-                        borderRadius: BorderRadius.circular(190),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, UserLogin.routeName);
+                      },
+                      child: Container(
+                        width: 103,
+                        height: 54,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColor.black,
+                          borderRadius: BorderRadius.circular(190),
+                        ),
+                        child: textWidget(title: "Sign in", fontSize: 18),
                       ),
-                      child: textWidget(title: "Sign in", fontSize: 18),
                     ),
-                    Container(
-                      width: 98,
-                      height: 48,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColor.buttonColor,
-                        borderRadius: BorderRadius.circular(190),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, UserRegister.routeName);
+                      },
+                      child: Container(
+                        width: 98,
+                        height: 48,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColor.buttonColor,
+                          borderRadius: BorderRadius.circular(190),
+                        ),
+                        child: textWidget(title: "Sign up", fontSize: 18),
                       ),
-                      child: textWidget(title: "Sign up", fontSize: 18),
                     ),
                   ],
                 ),
@@ -116,5 +126,3 @@ class _IntroductionState extends State<Introduction> {
     );
   }
 }
-
-

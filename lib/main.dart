@@ -1,8 +1,11 @@
 import 'package:ecommerce/routers.dart';
-import 'package:ecommerce/views/navigation/navigation_bar.dart';
+import 'package:ecommerce/views/introduction/introduction.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-main() {
+main() async {
+  await dotenv.load(fileName: '.env');
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const SuntechITEcommerceApp());
 }
 
@@ -14,7 +17,7 @@ class SuntechITEcommerceApp extends StatelessWidget {
       title: 'SunTech IT Ecommerce Application',
       debugShowCheckedModeBanner: false,
       routes: routes,
-      initialRoute: NavigationBar.routeName,
+      initialRoute: Introduction.routeName,
     );
   }
 }

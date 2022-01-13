@@ -21,7 +21,7 @@ class _ResetPasswordState extends State<ResetPassword> {
           const SizedBox(
             height: 5,
           ),
-          backButton(),
+          backButton(context),
           const SizedBox(
             height: 40,
           ),
@@ -87,7 +87,10 @@ class _ResetPasswordState extends State<ResetPassword> {
             height: 25,
           ),
 
-          const CustomButton(title: "SEND"),
+          CustomButton(
+            title: "SEND",
+            onTap: () {},
+          ),
         ],
       ),
     );

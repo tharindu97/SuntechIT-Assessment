@@ -22,7 +22,7 @@ class _UserVerificationState extends State<UserVerification> {
           const SizedBox(
             height: 5,
           ),
-          backButton(),
+          backButton(context),
           const SizedBox(
             height: 40,
           ),
@@ -71,7 +71,10 @@ class _UserVerificationState extends State<UserVerification> {
           const SizedBox(
             height: 25,
           ),
-          const CustomButton(title: "CONTINUE"),
+          CustomButton(
+            title: "CONTINUE",
+            onTap: () {},
+          ),
           const SizedBox(
             height: 15,
           ),

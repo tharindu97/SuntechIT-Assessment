@@ -19,14 +19,20 @@ class _UserLoginState extends State<UserLogin> {
       backgroundColor: AppColor.black,
       body: ListView(
         children: [
-          const SizedBox(height: 5,),
-          backButton(),
-          const SizedBox(height: 40,),
+          const SizedBox(
+            height: 5,
+          ),
+          backButton(context),
+          const SizedBox(
+            height: 40,
+          ),
           Container(
             alignment: Alignment.center,
             child: textWidget(title: "Sign in", fontSize: 25),
           ),
-          const SizedBox(height: 40,),
+          const SizedBox(
+            height: 40,
+          ),
 
           // User Email
           Container(
@@ -61,7 +67,9 @@ class _UserLoginState extends State<UserLogin> {
             ),
           ),
 
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
           // User Password
           Container(
@@ -96,32 +104,46 @@ class _UserLoginState extends State<UserLogin> {
             ),
           ),
 
-          const SizedBox(height: 25,),
+          const SizedBox(
+            height: 25,
+          ),
 
-          const CustomButton(title: "SIGN IN"),
+          CustomButton(
+            title: "SIGN IN",
+            onTap: () {},
+          ),
 
-          const SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
 
           const Text(
             "OR",
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: AppColor.lightGray,
-                fontSize: 16,
+              color: AppColor.lightGray,
+              fontSize: 16,
             ),
           ),
-          const SizedBox(height: 8,),
+          const SizedBox(
+            height: 8,
+          ),
 
-          const SocialMedia(title: "Login With Google", imagePath: "images/google.png"),
+          const SocialMedia(
+              title: "Login With Google", imagePath: "images/google.png"),
 
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
-          const SocialMedia(title: "Login With Facebook", imagePath: "images/facebook.png"),
+          const SocialMedia(
+              title: "Login With Facebook", imagePath: "images/facebook.png"),
 
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
           richText(firstName: "Don't have an account? ", lastName: ' Sign up'),
-
         ],
       ),
     );
