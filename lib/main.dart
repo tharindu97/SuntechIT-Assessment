@@ -1,5 +1,6 @@
 import 'package:ecommerce/routers.dart';
-import 'package:ecommerce/views/introduction/introduction.dart';
+import 'package:ecommerce/views/cart/item_view.dart';
+import 'package:ecommerce/views/cart/user_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -17,7 +18,7 @@ class SuntechITEcommerceApp extends StatelessWidget {
       title: 'SunTech IT Ecommerce Application',
       debugShowCheckedModeBanner: false,
       routes: routes,
-      initialRoute: Introduction.routeName,
+      initialRoute: UserCart.routeName,
     );
   }
 }

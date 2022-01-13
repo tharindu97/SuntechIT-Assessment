@@ -59,6 +59,30 @@ class _UserCartState extends State<UserCart> {
                                             fontSize: 25,
                                           ),
                                         ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        RichText(
+                                          textAlign: TextAlign.right,
+                                          text: const TextSpan(
+                                            text: "159.00  ",
+                                            style: TextStyle(
+                                              color: AppColor.lightGray,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20,
+                                            ),
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: "99.00",
+                                                style: TextStyle(
+                                                  color: AppColor.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -72,13 +96,27 @@ class _UserCartState extends State<UserCart> {
                               children: [
                                 Expanded(
                                   child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 40,
+                                    ),
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                          MainAxisAlignment.spaceAround,
                                       children: const [
-                                        Icon(Icons.add),
-                                        Text("1"),
-                                        Icon(Icons.add),
+                                        Icon(
+                                          Icons.add,
+                                          color: AppColor.white,
+                                        ),
+                                        Text(
+                                          "1",
+                                          style: TextStyle(
+                                            color: AppColor.white,
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.add,
+                                          color: AppColor.white,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -89,8 +127,19 @@ class _UserCartState extends State<UserCart> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: const [
-                                        Icon(Icons.delete),
-                                        Text("Remove")
+                                        Icon(
+                                          Icons.delete,
+                                          color: AppColor.lightGray,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          "Remove",
+                                          style: TextStyle(
+                                            color: AppColor.lightGray,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -107,7 +156,52 @@ class _UserCartState extends State<UserCart> {
             ),
             Container(
               height: 100,
-              color: Colors.blue,
+              color: AppColor.itemColor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(left: 40),
+                      child: RichText(
+                        text: const TextSpan(
+                          text: "243.00  \n",
+                          style: TextStyle(
+                            color: AppColor.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: "View Details",
+                              style: TextStyle(
+                                color: AppColor.blue,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      height: 50,
+                      width: 100,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColor.buttonColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: textWidget(
+                        title: "Place Order",
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
