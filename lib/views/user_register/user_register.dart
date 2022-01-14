@@ -23,6 +23,9 @@ class _UserRegisterState extends State<UserRegister> {
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  bool isLoadingButton = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +68,7 @@ class _UserRegisterState extends State<UserRegister> {
                 ),
                 Expanded(
                   child: TextFormField(
+                    style:  const TextStyle(color: AppColor.white,),
                     controller: _userNameController,
                     decoration: const InputDecoration(
                       hintText: "Full name",
@@ -103,6 +107,7 @@ class _UserRegisterState extends State<UserRegister> {
                 ),
                 Expanded(
                   child: TextFormField(
+                    style:  const TextStyle(color: AppColor.white,),
                     controller: _emailController,
                     decoration: const InputDecoration(
                       hintText: "example@gmail.com",
@@ -141,6 +146,8 @@ class _UserRegisterState extends State<UserRegister> {
                 ),
                 Expanded(
                   child: TextFormField(
+                    obscureText: true,
+                    style:  const TextStyle(color: AppColor.white,),
                     controller: _passwordController,
                     decoration: const InputDecoration(
                       hintText: "your password",
@@ -179,6 +186,8 @@ class _UserRegisterState extends State<UserRegister> {
                 ),
                 const Expanded(
                   child: TextField(
+                    obscureText: true,
+                    style:  TextStyle(color: AppColor.white,),
                     decoration: InputDecoration(
                       hintText: "your password",
                       hintStyle: TextStyle(color: AppColor.lightGray),
@@ -197,25 +206,38 @@ class _UserRegisterState extends State<UserRegister> {
           ),
 
           CustomButton(
+            isLoading: isLoadingButton,
             title: "SIGN UP",
             onTap: () async {
+              setState(() {
+                isLoadingButton = true;
+              });
               RequestBody requestBody = RequestBody(
                 fullName: _userNameController.text.toString(),
                 email: _emailController.text.toString(),
                 password: _passwordController.text.toString(),
               );
-              await authenticationBloc
-                  .createUserAccount(requestBody)
-                  .then((Responce responce) => {
-                        if (responce.status == 1)
-                          {
-                            saveToken(
-                              responce.token.toString(),
-                            ),
-                            Navigator.pushNamed(context, UserLogin.routeName),
-                          },
-                        flutterToast(msg: responce.message),
-                      });
+              await authenticationBloc.createUserAccount(requestBody).then(
+                (Responce responce) {
+                  if (responce.status == 1) {
+                    saveToken(
+                      responce.token.toString(),
+                    );
+                    setState(() {
+                      isLoadingButton = false;
+                    });
+                    Navigator.pushNamed(context, UserLogin.routeName);
+                  }
+                  setState(() {
+                    isLoadingButton = false;
+                  });
+                  flutterToast(msg: responce.message);
+                },
+              ).whenComplete(() {
+                setState(() {
+                  isLoadingButton = false;
+                });
+              });
             },
           ),
 

@@ -88,6 +88,7 @@ class _ResetPasswordState extends State<ResetPassword> {
           ),
 
           CustomButton(
+            isLoading: false,
             title: "SEND",
             onTap: () {},
           ),

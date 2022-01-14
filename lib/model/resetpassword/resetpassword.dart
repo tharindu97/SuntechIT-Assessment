@@ -1,6 +1,5 @@
 import 'package:retrofit/retrofit.dart';
-import 'package:dio/dio.dart'
-    show Dio, DioError, Options, RequestOptions, ResponseType;
+import 'package:dio/dio.dart' show Dio, Options, RequestOptions, ResponseType;
 import 'package:json_annotation/json_annotation.dart';
 
 part 'resetpassword.g.dart';

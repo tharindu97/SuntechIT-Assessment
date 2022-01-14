@@ -22,6 +22,8 @@ class _UserLoginState extends State<UserLogin> {
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  bool isLoadingButton = false;
+
   String? token;
   Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 
@@ -72,6 +74,7 @@ class _UserLoginState extends State<UserLogin> {
                 ),
                 Expanded(
                   child: TextFormField(
+                    style:  const TextStyle(color: AppColor.white,),
                     controller: _userNameController,
                     decoration: const InputDecoration(
                       hintText: "username",
@@ -110,6 +113,8 @@ class _UserLoginState extends State<UserLogin> {
                 ),
                 Expanded(
                   child: TextFormField(
+                    obscureText: true,
+                    style:  const TextStyle(color: AppColor.white,),
                     controller: _passwordController,
                     decoration: const InputDecoration(
                       hintText: "your password",
@@ -130,23 +135,38 @@ class _UserLoginState extends State<UserLogin> {
 
           CustomButton(
             title: "SIGN IN",
+            isLoading: isLoadingButton,
             onTap: () async {
+              setState(() {
+                isLoadingButton = true;
+              });
               await authenticationBloc
                   .loginUserAccount(
-                    token: token.toString(),
-                    username: _userNameController.text.toString(),
-                    password: _passwordController.text.toString(),
-                  )
-                  .then((Responce responce) => {
-                        if (responce.status == 1)
-                          {
-                            Navigator.pushNamed(
-                              context,
-                              NavigationBar.routeName,
-                            ),
-                          },
-                        flutterToast(msg: responce.message),
-                      });
+                token: token.toString(),
+                username: _userNameController.text.toString(),
+                password: _passwordController.text.toString(),
+              )
+                  .then(
+                (Responce responce) {
+                  if (responce.status == 1) {
+                    setState(() {
+                      isLoadingButton = false;
+                    });
+                    Navigator.pushNamed(
+                      context,
+                      NavigationBar.routeName,
+                    );
+                  }
+                  setState(() {
+                    isLoadingButton = false;
+                  });
+                  flutterToast(msg: responce.message);
+                },
+              ).whenComplete(() {
+                setState(() {
+                  isLoadingButton = false;
+                });
+              });
             },
           ),
 

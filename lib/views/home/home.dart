@@ -1,4 +1,5 @@
 import 'package:ecommerce/config/color_config.dart';
+import 'package:ecommerce/views/cart/item_view.dart';
 import 'package:ecommerce/widgets/common_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -138,86 +139,91 @@ class _HomeState extends State<Home> {
               scrollDirection: Axis.horizontal,
               itemCount: 5,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  width: 150,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: AppColor.itemColor,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            RichText(
-                              textAlign: TextAlign.left,
-                              text: const TextSpan(
-                                text: "Boat Ws54 \n",
-                                style: TextStyle(
+                return GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, ItemView.routeName);
+                  },
+                  child: Container(
+                    width: 150,
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColor.itemColor,
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              RichText(
+                                textAlign: TextAlign.left,
+                                text: const TextSpan(
+                                  text: "Boat Ws54 \n",
+                                  style: TextStyle(
+                                    color: AppColor.white,
+                                    fontSize: 15,
+                                  ),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: "4.5",
+                                      style: TextStyle(
+                                        color: AppColor.white,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(left: 25),
+                                child: Image.asset(
+                                  "images/favourite.png",
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 100,
+                          child: Image.asset("images/item1.png"),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              RichText(
+                                textAlign: TextAlign.left,
+                                text: const TextSpan(
+                                  text: "89.00 \n",
+                                  style: TextStyle(
+                                    color: AppColor.lightGray,
+                                    fontSize: 12,
+                                  ),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: "54.00",
+                                      style: TextStyle(
+                                        color: AppColor.white,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(left: 60),
+                                color: AppColor.buttonColor,
+                                child: const Icon(
+                                  Icons.add,
                                   color: AppColor.white,
-                                  fontSize: 15,
                                 ),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: "4.5",
-                                    style: TextStyle(
-                                      color: AppColor.white,
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ],
                               ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 25),
-                              child: Image.asset(
-                                "images/favourite.png",
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 100,
-                        child: Image.asset("images/item1.png"),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            RichText(
-                              textAlign: TextAlign.left,
-                              text: const TextSpan(
-                                text: "89.00 \n",
-                                style: TextStyle(
-                                  color: AppColor.lightGray,
-                                  fontSize: 12,
-                                ),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: "54.00",
-                                    style: TextStyle(
-                                      color: AppColor.white,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 25),
-                              color: AppColor.buttonColor,
-                              child: const Icon(
-                                Icons.add,
-                                color: AppColor.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

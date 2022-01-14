@@ -72,6 +72,7 @@ class _UserVerificationState extends State<UserVerification> {
             height: 25,
           ),
           CustomButton(
+            isLoading: false,
             title: "CONTINUE",
             onTap: () {},
           ),

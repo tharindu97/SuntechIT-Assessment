@@ -1,7 +1,6 @@
 import 'package:ecommerce/model/helper/authenricationrespond.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:dio/dio.dart'
-    show Dio, DioError, Options, RequestOptions, ResponseType;
+import 'package:dio/dio.dart' show Dio, Options, RequestOptions, ResponseType;
 
 part 'passwordverification.g.dart';
 
